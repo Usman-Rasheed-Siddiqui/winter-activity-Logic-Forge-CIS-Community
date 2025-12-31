@@ -82,7 +82,7 @@ def fix_broker_expression(string):
 
     return pairs
 
-string = "((("
+string = "()())()"
 
 print("Broken Expression:", string)
 print("Fixes:",fix_broker_expression(string))
