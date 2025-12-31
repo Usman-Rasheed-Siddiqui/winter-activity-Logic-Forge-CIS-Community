@@ -30,10 +30,11 @@ def combinationCheck(string, left, right, start, pairs):
     :param start: index to start checking from
     :param pairs: list of correct pairs
     '''
+    
     if isValid(string):     # If the detected pattern is valid
         pairs.append(string)
 
-    for i in range(len(string)):        # Looping on the given string
+    for i in range(start, len(string)):        # Looping on the given string
         if i > start and string[i] == string[i - 1]:    # To avoid duplicates
             continue
 
@@ -81,6 +82,7 @@ def fix_broker_expression(string):
 
     return pairs
 
-string = "()())()"
+string = "((("
 
-print(fix_broker_expression(string))
+print("Broken Expression:", string)
+print("Fixes:",fix_broker_expression(string))

@@ -22,4 +22,6 @@ def contrib_multipler(contributions):
 
     return impact
 
-print(contrib_multipler([1, 2, 3, 4]))
+contributions = [-1, 1, 0, -3, 3]
+print("Team Members Contributions:", contributions)
+print("Team Members Performance:",contrib_multipler(contributions))

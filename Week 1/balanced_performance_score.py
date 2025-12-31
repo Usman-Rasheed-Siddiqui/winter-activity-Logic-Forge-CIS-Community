@@ -12,6 +12,11 @@ def balanced_performance(scoreA, scoreB):
     total_length = lengthA + lengthB
     median_index = int(total_length / 2)
 
+    if not 0 <= lengthA <= 1000 and not 0 <= lengthB <= 1000:
+        return "Scores limit breached"
+
+    if not 1 <= total_length <= 2000:
+        return "Total scores limit breached"
 
     median = 0
     previous = None
@@ -52,4 +57,9 @@ def balanced_performance(scoreA, scoreB):
 
     return median
     
-print(balanced_performance([1, 2, 3], [4]))            
+scoreA = [1, 2]
+scoreB = [3, 4]
+
+print("Team A Score:", scoreA)
+print("Team B score", scoreB)
+print("Median of all the scores:",balanced_performance(scoreA, scoreB))            

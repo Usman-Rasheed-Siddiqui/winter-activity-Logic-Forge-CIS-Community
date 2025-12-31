@@ -42,7 +42,7 @@ def password_recover(log, pattern):
         while satisfied == need:        # When the needed characters are satisfied in the already detected log pattern
             end = i
             temp = (end - start) + 1
-            if temp < length:           # If the current pattern has the smaller length then that of the previous detected
+            if temp <= length:           # If the current pattern has the smaller length then that of the previous detected
                 length = temp
                 shortest = (start, end)
 
@@ -59,5 +59,9 @@ def password_recover(log, pattern):
         return log[start: end + 1]
     else:
         return ""
-                     
-print(password_recover("ADOBECODEBANC", "ABC"))
+
+log = "ADOBECODEBANC"
+pattern = "ABC"
+
+print(f"Log: {log}, Pattern: {pattern}")
+print("Shortest Pattern Window Detected:",password_recover(log, pattern))

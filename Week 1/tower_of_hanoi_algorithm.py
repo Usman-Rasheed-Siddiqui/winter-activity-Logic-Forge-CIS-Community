@@ -4,6 +4,7 @@ def towerOfHanoi(N, from_rod, aux_rod, to_rod):
     '''
     The function acts as the tower of Hanoi. It follows the rule that we move function N - 1 disks from rod 1,
     then 1 disk from rod 2 and then N - 1 from rod 3.
+    It prints each move along thr way it moves to the end.
     
     :param N: The number of disks
     :param from_rod: Rod containing initially all disks
@@ -25,4 +26,11 @@ def towerOfHanoi(N, from_rod, aux_rod, to_rod):
 
     towerOfHanoi(N-1, aux_rod, from_rod, to_rod)
 
-towerOfHanoi(3, "A", "B", "C")
+disks = 4
+print("Disks:", disks)
+from_rod = "A"
+aux_rod = "B"
+to_rod = "C"
+print(f"To rod: {to_rod}, Aux rod: {aux_rod}, From rod: {from_rod}")
+print("Steps:")
+towerOfHanoi(disks, from_rod, aux_rod, to_rod)
