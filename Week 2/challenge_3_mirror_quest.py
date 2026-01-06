@@ -1,37 +1,20 @@
 
-
-def palindrome_check(string):
-    
-    i = 0
-    j = len(string)
-    palindrome = True
-
-    while i < j:
-        if string[i] != string[j]:
-            palindrome = False
-            break
-        
-        i += 1
-        j -= 1
-
-    return palindrome
-
-
 def find_longest_mirror_length(s):
 
     length = len(s)
 
     if length == 1:
         return 1
-    
-    temp = s
 
-    for i in range(length):
-        if temp[0] != temp[length - 1]:
-            if palindrome_check(temp[1:]):
-                return len(temp[1:])
-            
-            elif palindrome_check(temp[:length - 1]):
-                return len(temp[1:])
+    i = 0
+    j = len(s) - 1
 
-find_longest_mirror_length("abcb")
+    while i < j:
+        if s[i] != s[j]:
+            max_string = max(s[i + 1:], s[i: j])
+            return find_longest_mirror_length(max_string)
+        
+        else:
+            return 2 + find_longest_mirror_length(s[i + 1: ])
+
+print(find_longest_mirror_length("bbabcbcab"))
