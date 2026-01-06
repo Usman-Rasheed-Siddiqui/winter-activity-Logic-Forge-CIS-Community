@@ -6,23 +6,21 @@ def can_balance_scales(arr):
 
     total = sum(arr)
 
-    split = total / 2
+    split = total // 2
 
     if split % 2 != 0:
         return False
-
-    arr.sort()
-    bagA = arr
-    bagB = []
+    
+    bagA = {0}
 
     for i in range(len(arr)):
-        if bagB:
-            if sum(bagA) == sum(bagB) == int(split):
-                return True
-        temp = bagA.pop(0)
-        bagB.append(temp)
-    
-    return False
+
+        if split in bagA:
+            return True
+
+        bagA.add(arr[i])
+        for possibility in bagA:
+            bagA.add(possibility + arr[i])
 
 arr = [10, 20, 30, 40]
 print(can_balance_scales(arr))
