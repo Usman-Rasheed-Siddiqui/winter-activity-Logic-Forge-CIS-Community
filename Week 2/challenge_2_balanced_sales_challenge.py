@@ -12,15 +12,15 @@ def can_balance_scales(arr):
         return False
     
     bagA = {0}
+    possibilities = {0}
 
     for i in range(len(arr)):
 
         if split in bagA:
             return True
-
-        bagA.add(arr[i])
+        
         for possibility in bagA:
-            bagA.add(possibility + arr[i])
+            possibilities.add(possibility + arr[i])
 
 arr = [10, 20, 30, 40]
 print(can_balance_scales(arr))
