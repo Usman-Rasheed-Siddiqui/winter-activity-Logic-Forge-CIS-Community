@@ -1,10 +1,17 @@
 
+import time
+
 def count_ways_to_summit(n):
+    '''
+    Docstring for count_ways_to_summit
+    
+    :param n: Total number of steps to reach the top
+    '''
 
     prev = 0
     current = 0
 
-    for i in range(1, n+ 1):
+    for _ in range(1, n + 1):
 
         temp = prev
         prev = current
@@ -17,5 +24,7 @@ def count_ways_to_summit(n):
 
     return current
 
-
-print(count_ways_to_summit(6))
+start = time.time()
+print("Number of ways of climbing mountain:",count_ways_to_summit(5))
+end = time.time()
+print(f"Time: {end - start} sec")
