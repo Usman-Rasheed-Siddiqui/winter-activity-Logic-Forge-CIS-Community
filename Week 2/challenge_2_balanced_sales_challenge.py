@@ -6,10 +6,10 @@ def can_balance_scales(arr):
 
     total = sum(arr)
 
-    split = total // 2
-
-    if split % 2 != 0:
+    if total % 2 != 0:
         return False
+    
+    split = total // 2
     
     bagA = [0]
     possibilities = {0}
@@ -24,5 +24,7 @@ def can_balance_scales(arr):
 
         bagA = list(possibilities)
 
-arr = [10, 20, 30, 40]
+    return split in possibilities
+
+arr = [2, 4, 6, 1]
 print(can_balance_scales(arr))
