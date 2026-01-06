@@ -11,7 +11,7 @@ def can_balance_scales(arr):
     if split % 2 != 0:
         return False
     
-    bagA = {0}
+    bagA = [0]
     possibilities = {0}
 
     for i in range(len(arr)):
@@ -21,6 +21,8 @@ def can_balance_scales(arr):
         
         for possibility in bagA:
             possibilities.add(possibility + arr[i])
+
+        bagA = list(possibilities)
 
 arr = [10, 20, 30, 40]
 print(can_balance_scales(arr))
