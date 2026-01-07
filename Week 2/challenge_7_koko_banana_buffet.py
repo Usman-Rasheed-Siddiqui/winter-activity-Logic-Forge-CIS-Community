@@ -18,13 +18,17 @@ def calculate_minimum_speed(piles, k):
         
         mid = (low + high) // 2
         result = hours_check(piles, mid)
-        if mid == result:
-            return mid
         
-        elif mid <= k:
+        if result <= k:
             high = mid
 
         else:
-            low = mid - 1
+            low = mid + 1
 
-    return mid
+    return low
+
+
+piles = [5, 10, 15, 20]
+k = 7
+
+print(calculate_minimum_speed(piles, k))
