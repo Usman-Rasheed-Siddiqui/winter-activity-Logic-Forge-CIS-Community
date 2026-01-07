@@ -1,32 +1,24 @@
 
 def find_longest_mirror_length(s):
 
-    length = len(s)
-    longest_length = 0
+    string = s
+    reverse = s[:: -1]
 
-    # odd length
-
-    for i in range(length):
-        left, right = i, i
-        while left <= 0 and right < length and s[left] == s[right]:
-            temp_length = (right - left) + 1
-            if temp_length > longest_length:
-                longest_length = temp_length
-            
-            left -= 1
-            right += 1
-
-    for  i in range(length):
-        left = i
-        right = i + 1
-        while left <= 0 and right < length and s[left] == s[right]:
-            temp_length = (right - left) + 1
-            if temp_length > longest_length:
-                longest_length = temp_length
-            
-            left -= 1
-            right += 1
     
-    return longest_length
+    len1 = len(string)
+    len2 = len(reverse)
 
-print(find_longest_mirror_length("bbabcbcab"))
+    possibilities = [[0] * (len2 + 1) for _ in range(len1 + 1)]
+
+    for i in range(len1):
+        for j in range(len2):
+            if string[i] == string[j]:
+                possibilities[i + 1][j + 1] = 1 + possibilities[i][j]
+            
+            else:
+                possibilities[i + 1][j + 1] = max(possibilities[i][j + 1], possibilities[i + 1][j])
+
+
+    return possibilities[i][j] - 1
+
+print(find_longest_mirror_length("GEEKS"))
