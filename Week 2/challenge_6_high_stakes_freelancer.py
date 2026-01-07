@@ -23,13 +23,22 @@ def maximize_freelance_profit(deadlines, profits):
     jobs = []
     profits = []
 
+    max_deadline = max(deadlines)
+    slots = [0] * (max_deadline + 1)
+
     for combo in combinations:
-        if combo[0] > len(jobs):
-            jobs.append(combo[0])
-            profits.append(combo[1])
-            
+        deadline, profit = combo
+        for i in range(deadline, 0, -1):
+            if slots[i] == 0:
+                slots[i] = 1
+                jobs.append(combo)
+                profits.append(profit)
+                break
+        
+
     return [len(jobs), sum(profits)]
 
+deadline = [5, 1, 2, 3, 3, 2]
+profits   = [20, 50, 30, 40, 25, 10]
 
-
-print(maximize_freelance_profit([2, 1, 2, 1, 1], [100, 19, 27, 25, 15]))
+print(maximize_freelance_profit(deadline, profits))
