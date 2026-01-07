@@ -37,7 +37,7 @@ def min_cancelled_bookings(intervals):
         
     return count
 
-intervals = [[1, 2], [2, 3], [3, 4], [1, 3]]
+intervals = [[1, 2], [5, 10], [18, 35]]
 
 print("Booking intervals:", intervals)
 print("Minimum number of cancellations required:", min_cancelled_bookings(intervals))

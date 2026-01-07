@@ -42,8 +42,8 @@ def maximize_freelance_profit(deadlines, profits):
         
     return [len(jobs), sum(profits)]
 
-deadline = [5, 1, 2, 3, 3, 2]
-profits   = [20, 50, 30, 40, 25, 10]
+deadline = [2, 1, 2, 1, 1]
+profits   = [100, 19, 27, 25, 15]
 
 print("Deadlines:", deadline)
 print("Profits:", profits)

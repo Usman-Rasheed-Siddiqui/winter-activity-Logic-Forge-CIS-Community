@@ -26,6 +26,6 @@ def count_ways_to_summit(n):
     return current      
 
 start = time.time()
-print("Number of ways of climbing mountain:",count_ways_to_summit(10))
+print("Number of ways of climbing mountain:",count_ways_to_summit(45))
 end = time.time()
 print(f"Time: {end - start} sec")

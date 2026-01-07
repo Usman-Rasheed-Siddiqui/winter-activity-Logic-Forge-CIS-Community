@@ -47,8 +47,8 @@ def count_payment_combinations(coins, total_sum):
     return possibilities[total_sum]     # The last index gives the total number of possibilities
 
 
-coins = [1, 2]
-total_sum = 4
+coins = [2, 5, 3, 6]
+total_sum = 10
 
 print("Coins:", coins)
 print("Target sum:", total_sum)

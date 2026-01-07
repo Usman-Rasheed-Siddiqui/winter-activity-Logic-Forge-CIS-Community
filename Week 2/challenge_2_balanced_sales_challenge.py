@@ -32,6 +32,6 @@ def can_balance_scales(arr):
 
     return split in possibilities
 
-arr = [1, 5, 11, 5]
+arr = [1, 3, 5]
 print("Array:", arr)
 print("Can be balanced:", can_balance_scales(arr))
