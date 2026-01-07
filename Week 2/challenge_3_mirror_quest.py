@@ -12,13 +12,14 @@ def find_longest_mirror_length(s):
 
     for i in range(len1):
         for j in range(len2):
-            if string[i] == string[j]:
+            if string[i] == reverse[j]:
                 possibilities[i + 1][j + 1] = 1 + possibilities[i][j]
             
             else:
                 possibilities[i + 1][j + 1] = max(possibilities[i][j + 1], possibilities[i + 1][j])
 
 
-    return possibilities[i][j] - 1
+    return possibilities[len1][len2]
 
-print(find_longest_mirror_length("GEEKS"))
+s = "bbabcbcab"
+print(find_longest_mirror_length(s))

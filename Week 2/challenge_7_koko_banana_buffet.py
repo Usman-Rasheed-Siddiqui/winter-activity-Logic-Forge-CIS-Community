@@ -7,8 +7,6 @@ def hours_check(piles, mid):
 
     return count
 
-
-
 def calculate_minimum_speed(piles, k):
 
     low = 1
