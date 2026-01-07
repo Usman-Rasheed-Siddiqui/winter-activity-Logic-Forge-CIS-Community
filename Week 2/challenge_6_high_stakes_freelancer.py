@@ -35,7 +35,6 @@ def maximize_freelance_profit(deadlines, profits):
                 profits.append(profit)
                 break
         
-
     return [len(jobs), sum(profits)]
 
 deadline = [5, 1, 2, 3, 3, 2]
