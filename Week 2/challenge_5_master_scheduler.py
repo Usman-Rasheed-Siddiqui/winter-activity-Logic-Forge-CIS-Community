@@ -8,7 +8,7 @@ def sorting_meetings(intervals):
             if intervals[j][1] < intervals[min_index][1]:
                 min_index = j
             
-        intervals[j][1], intervals[min_index][1] = intervals[min_index][1], intervals[j][1]
+        intervals[i], intervals[min_index] = intervals[min_index], intervals[i]
 
     return intervals
 
@@ -22,10 +22,8 @@ def min_cancelled_bookings(intervals):
         if meeting[0] >= last_end:
             last_end = meeting[1]
         else:
-            intervals.remove(meeting)
             count += 1
         
     return count
-
 
 print(min_cancelled_bookings([[1, 2], [2, 3], [3, 4], [1, 3]]))
