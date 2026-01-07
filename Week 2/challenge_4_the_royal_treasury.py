@@ -1,25 +1,24 @@
 
 def count_payment_combinations(coins, total_sum):
 
-    sums = []
+    possibilities = {}
 
-    count = 0
-    for i in range(total_sum):
-        if count <= total_sum:
-            sums.append(count)
-            count += 1
-
-    add = 0
-    possibilities = []
-    while add != total_sum:
-            add += coins[i]
-
-
-
-    for i in range(len(coins)):
-        while add != total_sum:
-            coins[i] += add
-
-
-
+    def counting_ways(current, add):
+        if add == total_sum:
+            return 1
         
+        if add > total_sum:
+            return 0
+        
+        if current == len(coins):
+            return 0
+
+        if (current, add) in possibilities:
+            return possibilities[(current, add)]
+        
+        possibilities[(current, add)] = counting_ways(current, add + coins[current]) + counting_ways(current + 1, add)
+        return possibilities[(current, add)]
+    
+    return counting_ways(0, 0)
+
+print(count_payment_combinations([1, 2], 4))
