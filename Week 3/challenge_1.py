@@ -1,11 +1,14 @@
 
-def smart_city_temperature_alert(K, temp):
+def smart_city_temperature_alert(N, K, Q):
     
-    alerts = [0 for _ in range(len(temp))]
+    temperatures = (input(f"Enter {N} days' temperatures with spaces: ")).split()
+    temperatures = [int(i) for i in temperatures]
+
+    alerts = [0 for _ in range(len(temperatures))]
     j = 1
     i = 0
-    while i < j and j < len(temp):
-        if temp[j] >= temp[i] + K or temp[j] <= temp[i] - K:
+    while i < j and j < len(temperatures):
+        if temperatures[j] >= temperatures[i] + K or temperatures[j] <= temperatures[i] - K:
             alerts[i] = j
             i += 1
             j = i + 1
@@ -13,18 +16,40 @@ def smart_city_temperature_alert(K, temp):
             j += 1
     
     print(alerts)
-    return alerts
 
-def next_alert(alerts):
+    next_query_num = Q // 2
+    counr_query_num = Q // 2
+    next_query = []
+    count_query = []
 
-    NEXT = int(input("Enter Temperature Index for Alert: "))
-    print("NEXT", NEXT)
 
-    if alerts[NEXT]:
-        return alerts[NEXT]
+    for i in range(next_query_num):
 
-    else:
-        return "No Alert"
+        NEXT = 0
+        NEXT = int(input("NEXT "))
+        if alerts[NEXT]:
+            next_query.append(alerts[NEXT])
+        else:
+            next_query.append("No Alert")
+
+    for i in range(counr_query_num):
+        COUNT = input("COUNT ").split()
+        COUNT = [int(i) for i in COUNT]
+        number = 0
+        for i in range(COUNT[0], COUNT[1] + 1):
+            if alerts[i]:
+                number += 1
+
+        count_query.append(number)
+
+    for i in range(Q//2):
+        print(next_query[i])
+
+    for i in range(Q//2):
+        print(count_query[i])
+
+
+
 
 def count_alerts(alerts):
     COUNT = int(input("Enter Initial and Final Count Indices with space: ")).split()
@@ -47,7 +72,4 @@ print(next_alert(alerts))
 
 print(count_alerts(alerts))
 print(count_alerts(alerts))
-
-COUNT = []
-stop = False
 
