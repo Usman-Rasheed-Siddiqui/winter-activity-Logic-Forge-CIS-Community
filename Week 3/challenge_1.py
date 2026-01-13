@@ -51,25 +51,9 @@ def smart_city_temperature_alert(N, K, Q):
 
 
 
-def count_alerts(alerts):
-    COUNT = int(input("Enter Initial and Final Count Indices with space: ")).split()
-    number = 0
+inputs = input("").split()
+inputs = [int(i) for i in inputs]
+N, K, Q = inputs[0], inputs[1], inputs[2]
 
-    for alert in alerts:
-        if alert:
-            number += 1
-    
-
-    return number
-
-K = 3
-temp = [73, 74, 75, 71, 69, 72, 76, 73]
-
-alerts = smart_city_temperature_alert(K, temp)
-
-print(next_alert(alerts))
-print(next_alert(alerts))
-
-print(count_alerts(alerts))
-print(count_alerts(alerts))
+alerts = smart_city_temperature_alert(N, K, Q)
 
