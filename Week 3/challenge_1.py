@@ -6,14 +6,18 @@ def smart_city_temperature(N, K, Q):
         print("Invalid number of inputs")
         return
     
-    alerts = [0 for i in range(len(temperatures))]
+    alerts = [0]*N
     j = 1
     i = 0
-    while j > i and j != len(temperatures):
-        if temperatures[j] >= temperatures[i] + K or temperatures[j] <= temperatures[i] - K:
-            alerts[i] = j
-        i += 1
+    while i < N:
         j = i + 1
+        while j < N:
+            if temperatures[j] >= temperatures[i] + K or temperatures[j] <= temperatures[i] - K:
+                alerts[i] = j
+                break
+            j += 1
+        i += 1
+            
     
     for i in range(Q):
         operation = input().split()
@@ -26,8 +30,8 @@ def smart_city_temperature(N, K, Q):
             L = int(operation[1])
             R = int(operation[2])
             count = 0
-            for i in range(L,R+1):
-                if alerts[i]:
+            for a in range(L,R+1):
+                if alerts[a]:
                     count += 1
             
             print(count)
