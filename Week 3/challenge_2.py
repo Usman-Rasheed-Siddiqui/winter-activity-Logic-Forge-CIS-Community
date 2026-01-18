@@ -44,7 +44,6 @@ def emergency_evacuation(weight, priority, limit):
     return result
 
 
-
 inputs = input().split()
 N, Q, limit = map(int, inputs)
 
@@ -54,11 +53,11 @@ priority = list(map(int,input().split()))
 for _ in range(Q):
     query = input().split()
     if query[0] == "CANPAIR":
-        X = query[1]
-        Y = query[2]
+        X = map(int, query[1])
+        Y = map(int, query[2])
 
     elif query[0] == "REMAINING":
-        B = query[1]
+        B = map(int, query[1])
 
 boats = emergency_evacuation(weight, priority, limit)
 print("Minimum boats =", boats)

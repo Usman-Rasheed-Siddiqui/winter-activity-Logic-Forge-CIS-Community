@@ -27,7 +27,7 @@ def find_longest_mirror_length(s):
     return possibilities[len1][len2]        # Return the bottom right (contains the maximum mirror length)
 
 
-s = "GEEKS"
+s = "BBABCBCAB"
 
 print("Input string:", s)
 print("Length of longest palindromic subsequence:", find_longest_mirror_length(s))
