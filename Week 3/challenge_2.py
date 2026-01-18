@@ -24,8 +24,6 @@ def emergency_evacuation(weight, priority, limit):
     for i in range(len(weight)):
         people.append((weight[i], priority[i]))
 
-    print(people)
-
     people = sorting_people(people)
 
     l, r = 0, len(people) - 1
@@ -36,12 +34,36 @@ def emergency_evacuation(weight, priority, limit):
         if people[l][0] + people[r][0] <= limit and not (people[l][1] == 1 and people[r][1] == 1):
             r -= 1
             l += 1
-            result += 1
         else:
             r -= 1
-            result += 1 
+        result += 1 
 
-    return result
+    return result, people
+
+def canpair(x, y, weight, priority):
+    if weight[x] + weight[y] <= limit and not (priority[x] == 1 and priority[y] == 1):
+        return "Yes"
+    else:
+        return "No"
+    
+def remaining(B, people, limit):
+    people = sorted(people, key=lambda x: x[0])
+    l, r = 0, len(people) - 1
+    boats = 0
+    evacuated = 0
+
+    while l <= r and boats < B:
+
+        if l != r and people[l][0] + people[r][0] <= limit and not (people[l][1] == 1 and people[r][1] == 1):
+            r -= 1
+            l += 1
+            evacuated += 2
+        else:
+            r -= 1
+            evacuated += 1
+        boats += 1 
+
+    return len(people) - evacuated
 
 
 inputs = input().split()
@@ -50,14 +72,16 @@ N, Q, limit = map(int, inputs)
 weight = list(map(int,input().split()))
 priority = list(map(int,input().split()))
 
+boats, sorted_people = emergency_evacuation(weight, priority, limit)
+print("Minimum boats =", boats)
+
 for _ in range(Q):
     query = input().split()
     if query[0] == "CANPAIR":
-        X = map(int, query[1])
-        Y = map(int, query[2])
+        X = int(query[1])
+        Y = int(query[2])
+        print(canpair(X, Y, weight, priority))
 
     elif query[0] == "REMAINING":
-        B = map(int, query[1])
-
-boats = emergency_evacuation(weight, priority, limit)
-print("Minimum boats =", boats)
+        B = int(query[1])
+        print(remaining(B, sorted_people, limit))
