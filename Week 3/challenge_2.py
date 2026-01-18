@@ -49,21 +49,26 @@ def canpair(x, y, weight, priority):
 def remaining(B, people, limit):
     people = sorted(people, key=lambda x: x[0])
     l, r = 0, len(people) - 1
-    boats = 0
+    boats = []
     evacuated = 0
+    boats_used = 0
 
-    while l <= r and boats < B:
+    while l <= r:
 
-        if l != r and people[l][0] + people[r][0] <= limit and not (people[l][1] == 1 and people[r][1] == 1):
+        if l < r and people[l][0] + people[r][0] <= limit and not (people[l][1] == 1 and people[r][1] == 1):
+            boats.append(2)
             r -= 1
             l += 1
-            evacuated += 2
+
         else:
             r -= 1
-            evacuated += 1
-        boats += 1 
+            boats.append(1)
+        boats_used += 1
 
-    return len(people) - evacuated
+    boats_sorted = sorted(boats, reverse=True)
+    max_people_evacuated = sum(boats_sorted[:B])
+        
+    return len(people) - max_people_evacuated
 
 
 inputs = input().split()
