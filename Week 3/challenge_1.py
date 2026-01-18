@@ -1,59 +1,39 @@
 
-def smart_city_temperature_alert(N, K, Q):
-    
-    temperatures = (input(f"Enter {N} days' temperatures with spaces: ")).split()
-    temperatures = [int(i) for i in temperatures]
+def smart_city_temperature(N, K, Q):
 
-    alerts = [0 for _ in range(len(temperatures))]
+    temperatures = list(map(int, input().split()))
+    if len(temperatures) != N:
+        print("Invalid number of inputs")
+        return
+    
+    alerts = [0 for i in range(len(temperatures))]
     j = 1
     i = 0
-    while i < j and j < len(temperatures):
+    while j > i and j != len(temperatures):
         if temperatures[j] >= temperatures[i] + K or temperatures[j] <= temperatures[i] - K:
             alerts[i] = j
-            i += 1
-            j = i + 1
-        else:
-            j += 1
+        i += 1
+        j = i + 1
     
-    print(alerts)
+    for i in range(Q):
+        operation = input().split()
 
-    next_query_num = Q // 2
-    counr_query_num = Q // 2
-    next_query = []
-    count_query = []
+        if operation[0] == "NEXT":
+            X = int(operation[1])
+            print(alerts[X] if alerts[X] != 0 else "No Alert")
+        
+        elif operation[0] == "COUNT":
+            L = int(operation[1])
+            R = int(operation[2])
+            count = 0
+            for i in range(L,R+1):
+                if alerts[i]:
+                    count += 1
+            
+            print(count)
+        
 
-
-    for i in range(next_query_num):
-
-        NEXT = 0
-        NEXT = int(input("NEXT "))
-        if alerts[NEXT]:
-            next_query.append(alerts[NEXT])
-        else:
-            next_query.append("No Alert")
-
-    for i in range(counr_query_num):
-        COUNT = input("COUNT ").split()
-        COUNT = [int(i) for i in COUNT]
-        number = 0
-        for i in range(COUNT[0], COUNT[1] + 1):
-            if alerts[i]:
-                number += 1
-
-        count_query.append(number)
-
-    for i in range(Q//2):
-        print(next_query[i])
-
-    for i in range(Q//2):
-        print(count_query[i])
-
-
-
-
-inputs = input("").split()
-inputs = [int(i) for i in inputs]
+inputs = list(map(int, input().split()))
 N, K, Q = inputs[0], inputs[1], inputs[2]
 
-alerts = smart_city_temperature_alert(N, K, Q)
-
+smart_city_temperature(N, K, Q)
